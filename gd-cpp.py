@@ -19,6 +19,9 @@ def init(platform):
 
 
 def build(platform):
+    if not os.path.exists('../src'):
+        os.mkdir('../src')
+
     result = subprocess.run([
         'scons',
         'platform={platform}'.format(platform=platform),

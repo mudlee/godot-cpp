@@ -11,5 +11,6 @@ void {CLASS_NAME}::_init(){{
 }}
 
 void {CLASS_NAME}::_process(float delta){{
-    Godot::print(delta);
+    // printing delta every frame
+    Godot::print(String(std::to_string(delta).c_str()));
 }}

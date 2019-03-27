@@ -40,12 +40,13 @@ def generate_library():
     with open('templates/library.cpp.template', 'r') as file:
         library_content = file.read().format(
             INCLUDE_CLASSES='\n'.join('#include "{f}"'.format(f=f) for f in cpp_files),
-            REGISTER_CLASSES='\n\t'.join(
+            REGISTER_CLASSES='\n'.join(
                 'godot::register_class<godot::{f}>();'.format(f=f.replace('.hpp', '')) for f in cpp_files)
         )
 
     with open('../src/library.cpp', 'w') as file:
         file.write(library_content)
+
 
 def add_class(class_name):
     with open('templates/hpp.template', 'r') as file:
@@ -85,6 +86,7 @@ def remove_file(file):
 def rm_class(class_name):
     remove_file('../src/' + class_name + '.hpp')
     remove_file('../src/' + class_name + '.cpp')
+    remove_file('../src/' + class_name + '.os')
     remove_file('../bin/' + class_name + '.gdnlib')
     remove_file('../bin/' + class_name + '.gdns')
 
@@ -112,6 +114,13 @@ def main(platform, cmd, cpp):
     elif cmd == 'rm_class':
         check_cpp(cmd, cpp)
         rm_class(cpp)
+        generate_library()
+        build(platform)
+    elif cmd == 'mv_class':
+        check_cpp(cmd, cpp)
+        classes = str(cpp).split(':')
+        rm_class(classes[0])
+        add_class(classes[1])
         generate_library()
         build(platform)
 

@@ -4,8 +4,8 @@
 #include <Godot.hpp>
 #include <Node.hpp>
 
-namespace godot{
-class {CLASS_NAME} : public Node {
+namespace godot{{
+class {CLASS_NAME} : public Node {{
     GODOT_CLASS({CLASS_NAME}, Node)
 
 public:
@@ -14,7 +14,7 @@ public:
     void _init();
 
     void _process(float delta);
-};
-}
+}};
+}}
 
 #endif /* !{CLASS_NAME}_HPP */

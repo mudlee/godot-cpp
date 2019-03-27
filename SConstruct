@@ -2,7 +2,7 @@
 import os, subprocess
 
 # define our target
-target_path = '../godot-code/bin/'
+target_path = '../bin/'
 target_name = 'lib-godot-cpp'
 
 # Local dependency paths, adapt them to your setup

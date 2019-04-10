@@ -1,7 +1,3 @@
-[submodule "godot-cpp"]
-	path = godot-cpp
-	url = https://github.com/GodotNativeTools/godot-cpp
-	branch = nativescript-1.1
 [submodule "bindings/godot-cpp"]
 	path = bindings/godot-cpp
 	url = https://github.com/GodotNativeTools/godot-cpp
